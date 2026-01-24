@@ -1,0 +1,226 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: rgba(11, 13, 17, 0.9);
+    border-bottom: 1px solid rgba(0, 242, 169, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    /* padding: 0.8rem 1.5rem; */
+    padding: 15px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Logo */
+
+.logo span {
+    /* color: #00f2a9; */
+    color: #00ff88;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+
+/* Links */
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    position: relative;
+    transition: 0.3s;
+    display: inline-block;
+    /* keep underline limited to text + padding */
+    padding: 0.35rem 0;
+    background: transparent;
+}
+
+.nav-links a:hover {
+    /* color: #00f2a9; */
+    color: #00ff88;
+    transition: all 0.3s;
+}
+
+
+/* Active link effect */
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;
+    background: #00ff88;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 260ms cubic-bezier(.2, .9, .3, 1);
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* Mobile Menu Icon */
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    width: 15px;
+    height: 1px;
+    background: #00ff88;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+    }
+    /* bring the hamburger closer to the right edge */
+    .nav-container {
+        padding: 15px 1rem;
+    }
+    .menu-icon {
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        padding: 6px;
+        border-radius: 6px;
+        margin-left: 0;
+    }
+    .menu-icon span {
+        width: 16px;
+        height: 2px;
+        margin: 4px 0;
+    }
+    .nav-links {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 60px;
+        background: #020617;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+        transform: translateY(-110%);
+        transition: transform 280ms cubic-bezier(.2, .9, .3, 1), opacity 220ms ease;
+        opacity: 0;
+        border-bottom: 1px solid rgba(0, 242, 169, 0.04);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        border-radius: 0 0 6px 6px;
+        align-items: center;
+        /* center items horizontally */
+        z-index: 1100;
+        /* sit below the menu icon */
+    }
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    /* Ensure links are centered and underlines stay under text */
+    .nav-links a {
+        display: inline-block;
+        padding: 0.6rem 0;
+        width: auto;
+        text-align: center;
+        background: transparent;
+    }
+}
+
+
+/* Hamburger -> X animation */
+
+.menu-icon {
+    position: relative;
+    z-index: 1110;
+    /* above the nav when open */
+}
+
+.menu-icon span {
+    display: block;
+    width: 28px;
+    height: 3.5px;
+    background: #00ff88;
+    margin: 5px 0;
+    transition: transform 0.28s ease, opacity 0.22s ease, background 0.22s ease;
+    transform-origin: center;
+    border-radius: 2px;
+}
+
+
+/* Explicit bar classes for open state (set by React) */
+
+.menu-icon .line1.rotate45 {
+    transform: translateY(14px) rotate(45deg);
+}
+
+.menu-icon .line2.rotate45 {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-icon .line3.rotate45 {
+    transform: translateY(-14px) rotate(-45deg);
+}
+
+
+/* Improve touch target */
+
+.menu-icon {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+
+/* Make the X more distinct when menu is open */
+
+.nav-links.open~.menu-icon {
+    background: rgba(2, 6, 23, 0.88);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.menu-icon:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+
+/* Optional: change bar color when open */
+
+.nav-links.open~.menu-icon span,
+.menu-icon .line1.rotate45,
+.menu-icon .line2.rotate45,
+.menu-icon .line3.rotate45 {
+    background: #00ff88;
+}
