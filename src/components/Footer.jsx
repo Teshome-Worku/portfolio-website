@@ -28,7 +28,7 @@ const Footer = () => {
           <h3>Connect With Me</h3>
           <div className="social-icons">
             <a href="https://github.com/Teshome-Worku" target="_blank"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/teshome-worku-017834392?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><FaLinkedin /></a>
+            <a href="https://www.linkedin.com/in/teshome-worku-01" target="_blank"><FaLinkedin /></a>
             <a href="https://t.me/Username_1251" target="_blank"><FaTelegram /></a>
             <a href="https://web.facebook.com/tesheTech" target="_blank"><FaFacebook /></a>
           </div>
