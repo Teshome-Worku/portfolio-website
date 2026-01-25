@@ -27,6 +27,8 @@ const About = () => {
             <span>CSS</span>
             <span>JavaScript</span>
             <span>React</span>
+            <span>Node.js</span>
+            <span>Tailwind CSS</span>
             <span>Git</span>
             <span>GitHub</span>
             <span>Figma</span>
