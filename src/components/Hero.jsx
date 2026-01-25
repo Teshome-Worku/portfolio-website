@@ -3,7 +3,6 @@ import "../css/hero.css";
 import heroImg from "../assets/images/coding.png"; // your animated image
 import { FaGithub, FaLinkedin, FaTelegramPlane, FaEnvelope } from "react-icons/fa";
 import HeroLottie from "./HeroLottie";
-
 const Hero = () => {
   return (
     <section className="hero" id="home">
@@ -44,7 +43,20 @@ const Hero = () => {
           </div>
           <div className="hero-buttons">
             <a href="/resume.pdf" className="btn primary" download title="Download CV">Download CV</a>
-            <a href="#contact" className="btn outline">Contact Me</a>
+            {/* <a href="#contact" className="btn outline">Contact Me</a> */}
+            {/* Hire Me Button */}
+            {/* <button
+            className="btn hire-btn"
+            onClick={() => document.getElementById("contact").scrollIntoView({ behavior: "smooth" })}
+            >
+            Hire Me 🚀
+            </button> */}
+            <button
+            className="btn hire-btn"
+            onClick={() => window.open("https://wa.me/251955800626", "_blank")}
+            >
+            Hire Me 🚀
+            </button>
           </div>
         </div>
         {/* Right Image */}
@@ -55,5 +67,4 @@ const Hero = () => {
     </section>
   );
 };
-
 export default Hero;

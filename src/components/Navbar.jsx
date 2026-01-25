@@ -8,15 +8,19 @@ const Navbar = () => {
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 
+    // Use multiple thresholds and pick the section with the largest
+    // intersectionRatio so only the most-visible section becomes active.
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveLink(entry.target.id);
-          }
-        });
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          const mostVisible = visible.reduce((a, b) =>
+            a.intersectionRatio > b.intersectionRatio ? a : b
+          );
+          setActiveLink(mostVisible.target.id);
+        }
       },
-      { threshold: 0.6 } // adjust if needed
+      { threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -24,7 +28,11 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleClick = () => setMenuOpen(false);
+  const handleClick = (id) => {
+    setMenuOpen(false);
+    // proactively set active link for immediate feedback when user clicks
+    if (id) setActiveLink(id);
+  };
 
   return (
     <header className="navbar">
@@ -39,43 +47,23 @@ const Navbar = () => {
 
         {/* Menu */}
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <a
-            href="#home"
-            className={activeLink === "home" ? "active" : ""}
-            onClick={handleClick}
-          >
+          <a href="#home" className={activeLink === "home" ? "active" : ""} onClick={() => handleClick("home")}>
             Home
           </a>
 
-          <a
-            href="#about"
-            className={activeLink === "about" ? "active" : ""}
-            onClick={handleClick}
-          >
+          <a href="#about" className={activeLink === "about" ? "active" : ""} onClick={() => handleClick("about")}>
             About
           </a>
 
-          <a
-            href="#projects"
-            className={activeLink === "projects" ? "active" : ""}
-            onClick={handleClick}
-          >
+          <a href="#projects" className={activeLink === "projects" ? "active" : ""} onClick={() => handleClick("projects")}>
             Projects
           </a>
 
-          <a
-            href="#skills"
-            className={activeLink === "skills" ? "active" : ""}
-            onClick={handleClick}
-          >
+          <a href="#skills" className={activeLink === "skills" ? "active" : ""} onClick={() => handleClick("skills")}>
             Skills
           </a>
 
-          <a
-            href="#contact"
-            className={activeLink === "contact" ? "active" : ""}
-            onClick={handleClick}
-          >
+          <a href="#contact" className={activeLink === "contact" ? "active" : ""} onClick={() => handleClick("contact")}>
             Contact
           </a>
         </nav>

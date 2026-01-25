@@ -72,6 +72,23 @@
         color: #020617;
     }
     
+    .hire-btn {
+        background: linear-gradient(135deg, #00ffb3, #00b3ff);
+        color: black;
+        font-weight: bold;
+        border: none;
+        padding: 12px 22px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        box-shadow: 0 0 15px rgba(0, 255, 179, 0.4);
+    }
+    
+    .hire-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 0 30px rgba(0, 255, 179, 0.8);
+    }
+    
     .hero-image {
         flex-shrink: 0;
         margin-right: 40px;
