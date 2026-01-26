@@ -3,7 +3,7 @@ async function handler(req, res) {
         return res.status(405).json({ error: "Method not allowed" });
     }
 
-    const { name, email, message } = req.body;
+    const { name, email, phone, message } = req.body;
 
     if (!name || !email || !message) {
         return res.status(400).json({ error: "Missing fields" });
@@ -21,6 +21,7 @@ async function handler(req, res) {
   📩 New Portfolio Message
   
   👤 Name: ${name}
+  📞 Phone: ${phone || 'N/A'}
   📧 Email: ${email}
   💬 Message: ${message}  `;
 
@@ -44,7 +45,7 @@ async function handler(req, res) {
         res.status(200).json({ success: true });
     } catch (error) {
         console.error('Error sending telegram message:', error);
-        // If telegram responded with a body, include it when available (helps debugging in Vercel logs)
+
         if (error && error.message) {
             return res.status(500).json({ error: 'Failed to send message', detail: error.message });
         }

@@ -111,13 +111,24 @@
 
 /* spin button */
 
-.spinner {
-    width: 20px;
-    height: 20px;
+
+/* .spinner {
+    width: 30px;
+    height: 30px;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-top: 3px solid #000;
     border-radius: 50%;
     animation: spin 3s linear infinite;
+    margin: auto;
+} */
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 255, 179, 0.3);
+    border-top: 3px solid #00ffb3;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
     margin: auto;
 }
 
