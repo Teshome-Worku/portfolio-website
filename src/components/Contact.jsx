@@ -84,6 +84,7 @@ const Contact = () => {
         <form className="contact-form" onSubmit={submitHandler}>
           <input type="text" placeholder="Your Name" name="name" required />
           <input type="email" placeholder="Your Email" name="email" required />
+          <input type="tel" placeholder="Your Phone Number eg. +251 9XX XXX XXX" name="phone" required />
           <textarea placeholder="Your Message" rows="5" name="message" required></textarea>
           <button type="submit">Send Message</button>
         </form>
