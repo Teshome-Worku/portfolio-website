@@ -109,6 +109,67 @@
 }
 
 
+/* spin button */
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-top: 3px solid #000;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.contact-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+/* success toast */
+
+.toast-success {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 255, 179, 0.15);
+    border: 1px solid rgba(0, 255, 179, 0.5);
+    backdrop-filter: blur(10px);
+    color: #00ffb3;
+    padding: 14px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    z-index: 9999;
+    animation: slideDown 0.4s ease, fadeOut 0.4s ease 3s forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+}
+
+
 /* Responsive */
 
 @media (max-width: 900px) {

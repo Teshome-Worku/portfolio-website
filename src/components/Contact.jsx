@@ -9,13 +9,18 @@ import {
   FaEnvelope
 } from "react-icons/fa";
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(false); // "success" toast state
  
   const API_URL = "/api/sendMessage";
   const submitHandler= async (e)=>{
     e.preventDefault();
+    setLoading(true);
+    setStatus(null);
     const formData = new FormData(e.target);
     const name = formData.get("name");
     const email = formData.get("email");
+    const phone = formData.get("phone");
     const message = formData.get("message");
 
         try {
@@ -24,21 +29,33 @@ const Contact = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name, email, message }),
+            body: JSON.stringify({ name, email, phone, message }),
         });
     
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
+        e.target.reset();
+        setToast(true);
+        setTimeout(() => setToast(false), 3500);
     
         const data = await response.json();
-        console.log(data);
     } catch (error) {
-        console.error("Error:", error);
-    }
+      alert("Something went wrong. Please try again.");
+       console.error("Error submitting form:", error);
+      }
+      finally { 
+        setLoading(false);
+      }
   }
   return (
     <section id="contact" className="contact-section">
+      {toast && (
+        <div className="toast-success">
+          ✅ Message sent successfully!
+        </div>
+      )}
+
       <h2 className="section-title">Contact Me</h2>
       <p className="section-subtitle">
         Let’s build something amazing together 🚀
@@ -86,7 +103,11 @@ const Contact = () => {
           <input type="email" placeholder="Your Email" name="email" required />
           <input type="tel" placeholder="Your Phone Number eg. +251 9XX XXX XXX" name="phone" required />
           <textarea placeholder="Your Message" rows="5" name="message" required></textarea>
-          <button type="submit">Send Message</button>
+          <button 
+           type="submit"
+           disabled={loading}>
+           {loading ? <span className="spinner"></span> : "Send Message"}
+          </button>
         </form>
 
       </div>
