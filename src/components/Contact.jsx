@@ -100,7 +100,7 @@ const Contact = () => {
           {/* Social Links */}
           <div className="contact-socials">
             <a href="https://github.com/Teshome-Worku" target="_blank"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/teshome-worku-01" target="_blank"><FaLinkedin /></a>
+            <a href="https://www.linkedin.com/in/teshome-worku-017834392" target="_blank"><FaLinkedin /></a>
             <a href="https://t.me/Username_1251" target="_blank"><FaTelegram /></a>
             <a href="https://web.facebook.com/tesheTech" target="_blank"><FaFacebook /></a>
           </div>
