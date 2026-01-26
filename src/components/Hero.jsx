@@ -1,6 +1,4 @@
-import React from "react";
 import "../css/hero.css";
-import heroImg from "../assets/images/coding.png"; // your animated image
 import { FaGithub, FaLinkedin, FaTelegramPlane, FaEnvelope } from "react-icons/fa";
 import HeroLottie from "./HeroLottie";
 const Hero = () => {
