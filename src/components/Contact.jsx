@@ -10,9 +10,11 @@ import {
 } from "react-icons/fa";
 
 const Contact = () => {
-  const API_URL = import.meta.env.PROD
-  ? "/api/sendMessage"
-  : "http://localhost:5173/api/sendMessage";
+  // Use a relative API path. During local development the Vite dev server
+  // does not serve serverless functions, so either run `vercel dev` or
+  // call the deployed endpoint. Pointing to a hardcoded localhost port
+  // causes 404s when the function isn't served there.
+  const API_URL = "/api/sendMessage";
   const submitHandler= async (e)=>{
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -21,7 +23,7 @@ const Contact = () => {
     const message = formData.get("message");
 
         try {
-        const response = await fetch( API_URL, {
+        const response = await fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
