@@ -8,12 +8,8 @@ import {
   FaPhoneAlt,
   FaEnvelope
 } from "react-icons/fa";
-
 const Contact = () => {
-  // Use a relative API path. During local development the Vite dev server
-  // does not serve serverless functions, so either run `vercel dev` or
-  // call the deployed endpoint. Pointing to a hardcoded localhost port
-  // causes 404s when the function isn't served there.
+ 
   const API_URL = "/api/sendMessage";
   const submitHandler= async (e)=>{
     e.preventDefault();

@@ -22,9 +22,7 @@ async function handler(req, res) {
   
   👤 Name: ${name}
   📧 Email: ${email}
-  💬 Message:
-  ${message}
-    `;
+  💬 Message: ${message}  `;
 
     try {
         const telegramRes = await fetch(
@@ -39,6 +37,7 @@ async function handler(req, res) {
         );
 
         const data = await telegramRes.json();
+        console.log('Telegram response:', data);
 
         if (!data.ok) throw new Error(`Telegram error: ${JSON.stringify(data)}`);
 
