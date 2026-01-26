@@ -10,6 +10,9 @@ import {
 } from "react-icons/fa";
 
 const Contact = () => {
+  const API_URL = import.meta.env.PROD
+  ? "/api/sendMessage"
+  : "http://localhost:5173/api/sendMessage";
   const submitHandler= async (e)=>{
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -18,7 +21,7 @@ const Contact = () => {
     const message = formData.get("message");
 
         try {
-        const response = await fetch("/api/sendMessage", {
+        const response = await fetch( API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
