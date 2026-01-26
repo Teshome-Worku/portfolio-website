@@ -17,15 +17,24 @@ const Contact = () => {
     const email = formData.get("email");
     const message = formData.get("message");
 
-    await fetch("/api/sendMessage", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        message,
-      }),
-    });
+        try {
+        const response = await fetch("/api/sendMessage", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, email, message }),
+        });
+    
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+    
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Error:", error);
+    }
   }
   return (
     <section id="contact" className="contact-section">
