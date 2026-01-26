@@ -10,6 +10,23 @@ import {
 } from "react-icons/fa";
 
 const Contact = () => {
+  const submitHandler= async (e)=>{
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+
+    await fetch("/api/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
+    });
+  }
   return (
     <section id="contact" className="contact-section">
       <h2 className="section-title">Contact Me</h2>
@@ -40,24 +57,24 @@ const Contact = () => {
 
             <div className="contact-item">
               <FaEnvelope />
-              <span>teshomeworku96@example.com</span>
+              <span>teshomeworku96@gmail.com</span>
             </div>
           </div>
 
           {/* Social Links */}
           <div className="contact-socials">
             <a href="https://github.com/Teshome-Worku" target="_blank"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/teshome-worku-017834392?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><FaLinkedin /></a>
+            <a href="https://www.linkedin.com/in/teshome-worku-01" target="_blank"><FaLinkedin /></a>
             <a href="https://t.me/Username_1251" target="_blank"><FaTelegram /></a>
             <a href="https://web.facebook.com/tesheTech" target="_blank"><FaFacebook /></a>
           </div>
         </div>
 
         {/* Right Side */}
-        <form className="contact-form">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" rows="5" required></textarea>
+        <form className="contact-form" onSubmit={submitHandler}>
+          <input type="text" placeholder="Your Name" name="name" required />
+          <input type="email" placeholder="Your Email" name="email" required />
+          <textarea placeholder="Your Message" rows="5" name="message" required></textarea>
           <button type="submit">Send Message</button>
         </form>
 
