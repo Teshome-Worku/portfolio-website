@@ -17,7 +17,6 @@ const Contact = () => {
   const submitHandler= async (e)=>{
     e.preventDefault();
     setLoading(true);
-    setStatus(null);
     const formData = new FormData(e.target);
     const name = formData.get("name");
     const email = formData.get("email");
