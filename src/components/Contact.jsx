@@ -12,11 +12,13 @@ import {
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(false); // "success" toast state
+  const [error, setError] = useState(false); // error state
  
   const API_URL = "/api/sendMessage";
   const submitHandler= async (e)=>{
     e.preventDefault();
     setLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 1200));
     const formData = new FormData(e.target);
     const name = formData.get("name");
     const email = formData.get("email");
@@ -35,13 +37,15 @@ const Contact = () => {
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
-        e.target.reset();
         setToast(true);
+        e.target.reset();
+       
         setTimeout(() => setToast(false), 3500);
     
-        const data = await response.json();
     } catch (error) {
-      alert("Something went wrong. Please try again.");
+      setError(true);
+      setTimeout(() => setError(false), 3500);
+     
        console.error("Error submitting form:", error);
       }
       finally { 
@@ -53,6 +57,11 @@ const Contact = () => {
       {toast && (
         <div className="toast-success">
           ✅ Message sent successfully!
+        </div>
+      )}
+      {error && (
+        <div className="toast-error">
+          ❌ Failed to send message. Please try again.
         </div>
       )}
 
@@ -106,7 +115,7 @@ const Contact = () => {
           <button 
            type="submit"
            disabled={loading}>
-           {loading ? <span className="spinner"></span> : "Send Message"}
+           {loading ? <div className="spinner"></div> : <span>Send Message</span>}
           </button>
         </form>
 

@@ -175,6 +175,40 @@
     }
 }
 
+.toast-error {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    color: #ff4d4d;
+    padding: 14px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    z-index: 9999;
+    animation: slideDown 0.4s ease, fadeOut 0.4s ease 3s forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+}
+
 
 /* Responsive */
 
