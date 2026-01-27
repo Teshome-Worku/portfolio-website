@@ -56,7 +56,7 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       {toast && (
         <div className="toast-success">
-          ✅ Message sent successfully!
+          Thank you! Your message has been sent successfully.
         </div>
       )}
       {error && (
