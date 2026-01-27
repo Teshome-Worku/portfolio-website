@@ -22,7 +22,7 @@ const Hero = () => {
             rel="noreferrer">
             <FaGithub />
             </a>
-            <a href="https://www.linkedin.com/in/teshome-worku-017834392?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"         
+            <a href="https://www.linkedin.com/in/teshome-worku-017834392"         
             target="_blank" 
             title="LinkedIn"
             rel="noreferrer">
@@ -40,15 +40,8 @@ const Hero = () => {
             </a>
           </div>
           <div className="hero-buttons">
-            <a href="/resume.pdf" className="btn primary" download title="Download CV">Download CV</a>
-            {/* <a href="#contact" className="btn outline">Contact Me</a> */}
-            {/* Hire Me Button */}
-            {/* <button
-            className="btn hire-btn"
-            onClick={() => document.getElementById("contact").scrollIntoView({ behavior: "smooth" })}
-            >
-            Hire Me 🚀
-            </button> */}
+            <a href="/TeshomeWorkuResume.pdf" className="btn primary" download title="Download CV">Download Resume</a>
+          
             <button
             className="btn hire-btn"
             onClick={() => window.open("https://wa.me/251955800626", "_blank")}
