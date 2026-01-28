@@ -1,18 +1,79 @@
-# React + Vite
+# 🚀 Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive personal portfolio website built with **React** to showcase my skills, projects, and experience as a frontend developer.  
+It includes a fully functional contact system with **Telegram integration** and **automatic confirmation emails** for visitors.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- ⚡ **Modern UI/UX** with responsive design
+- 🧑‍💻 **Projects showcase** with real-world examples
+- 📬 **Contact form with validation**
+- 🤖 **Telegram Bot integration** (instant message notifications)
+- ✉️ **Automatic email confirmation** to visitors (EmailJS)
+- ⏳ Loading states & toast notifications
+- 🌐 Social media links
+- 📱 Fully responsive (mobile, tablet, desktop)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 🛠️ Built With
 
-## Expanding the ESLint configuration
+- **React**
+- **JavaScript (ES6+)**
+- **CSS3**
+- **EmailJS** – for sending confirmation emails
+- **Telegram Bot API** – for receiving contact messages
+- **React Icons**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📂 Project Structure
+src/
+├── components/
+│ ├── Contact.jsx
+│ ├── Navbar.jsx
+| ├── About.jsx
+| ├── Hero.jsx
+| ├── Projects.jsx
+| ├── Skills.jsx
+| ├── Footer.jsx
+| ├── HeroLottie.jsx
+| ├── HeroLottiePlayer.jsx
+| ├── ScrollProgress.jsx
+├── css/
+│ ├── contact.css
+│ ├── about.css
+│ ├── footer.css
+│ ├── hero.css
+│ ├── navbar.css
+│ ├── projects.css
+│ ├── skills.css
+│ └── scrollProgress
+├── assets/
+├── App.jsx
+└── main.jsx
+
+
+## 📬 Contact Form Workflow
+
+1. Visitor fills and submits the contact form
+2. Message is sent instantly to **Telegram**
+3. Visitor receives an **automatic confirmation email**
+4. Success or error feedback is shown on the UI
+
+This ensures a smooth and professional communication experience.
+
+📸 Preview
+
+👉 Live Demo: https://teshedev.vercel.app/
+
+
+👤 Author
+
+Teshome Worku
+Frontend Developer | React Enthusiast
+
+GitHub: https://github.com/Teshome-Worku/
+

@@ -45,10 +45,10 @@ const Contact = () => {
   
       // 2️⃣ Send confirmation email to VISITOR
       await emailjs.send(
-        "service_d2ar56j",
-        "template_9kypzmr",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        "xhI3_R7hCRalnTxoc"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
   
       setToast(true);
