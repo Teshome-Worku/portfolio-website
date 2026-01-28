@@ -49,16 +49,16 @@ const Contact = () => {
       setTimeout(() => setToast(false), 4000);
   
       // 3️⃣ Send EmailJS (OPTIONAL)
-      // emailjs
-      //   .send(
-      //     import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      //     import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      //     templateParams,
-      //     import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      //   )
-      //   .catch(err => {
-      //     console.warn("Email confirmation failed:", err);
-      //   });
+      emailjs
+        .send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          templateParams,
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        )
+        .catch(err => {
+          console.warn("Email confirmation failed:", err);
+        });
   
     } catch (err) {
       console.error(err);
@@ -140,5 +140,4 @@ const Contact = () => {
     </section>
   );
 };
-
 export default Contact;
