@@ -42,6 +42,9 @@ const Contact = () => {
       });
   
       if (!response.ok) throw new Error("Telegram failed");
+      const data = await response.json();
+      if (!data.success) throw new Error("Telegram failed");
+      console.log("Telegram response:", data);
   
       // 2️⃣ Telegram success → show success immediately
       setToast(true);
