@@ -217,4 +217,10 @@
     .contact-container {
         grid-template-columns: 1fr;
     }
+    .toast-success {
+        width: 90%;
+    }
+    .toast-error {
+        width: 90%;
+    }
 }
