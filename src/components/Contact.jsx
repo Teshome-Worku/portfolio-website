@@ -54,7 +54,8 @@ const Contact = () => {
           import.meta.env.VITE_EMAILJS_SERVICE_ID,
           import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
           templateParams,
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+          // import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+          "JtEqHfKVbO-uSUMNq"
         )
         .catch(err => {
           console.warn("Email confirmation failed:", err);
