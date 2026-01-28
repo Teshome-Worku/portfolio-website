@@ -19,19 +19,15 @@ const Contact = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
     const formData = new FormData(e.target);
     const VITE_EMAILJS_SERVICE_ID=process.env.VITE_EMAILJS_SERVICE_ID;
     const VITE_EMAILJS_TEMPLATE_ID=process.env.VITE_EMAILJS_TEMPLATE_ID;
     const VITE_EMAILJS_PUBLIC_KEY=process.env.VITE_EMAILJS_PUBLIC_KEY;
-
-
     const templateParams = {
       name: formData.get("name"),
       email: formData.get("email"),
       message: formData.get("message"),
     };
-  
     try {
       // 1️⃣ Send to Telegram (MAIN ACTION)
       const response = await fetch(API_URL, {
@@ -44,7 +40,6 @@ const Contact = () => {
           message: templateParams.message,
         }),
       });
-  
       if (!response.ok) throw new Error("Telegram failed");
   
       // 2️⃣ Telegram success → show success immediately
@@ -57,11 +52,7 @@ const Contact = () => {
         .send(
           VITE_EMAILJS_SERVICE_ID,
           VITE_EMAILJS_TEMPLATE_ID,
-          // import.meta.env.VITE_EMAILJS_SERVICE_ID,
-          // import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
           templateParams,
-          // import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-          // "JtEqHfKVbO-uSUMNq"
           VITE_EMAILJS_PUBLIC_KEY
         )
         .catch(err => {
@@ -77,7 +68,6 @@ const Contact = () => {
       setLoading(false);
     }
   };
-  
   return (
     <section id="contact" className="contact-section">
       {toast && (
@@ -90,7 +80,6 @@ const Contact = () => {
           ❌ Failed to send message. Please try again.
         </div>
       )}
-
       <h2 className="section-title">Contact Me</h2>
       <p className="section-subtitle">
         Let’s build something amazing together 🚀
@@ -131,7 +120,6 @@ const Contact = () => {
             <a href="https://web.facebook.com/tesheTech" target="_blank"><FaFacebook /></a>
           </div>
         </div>
-
         {/* Right Side */}
         <form className="contact-form" onSubmit={submitHandler}>
           <input type="text" placeholder="Your Name" name="name" required />
