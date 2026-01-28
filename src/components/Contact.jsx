@@ -21,15 +21,15 @@ const Contact = () => {
     setLoading(true);
   
     const formData = new FormData(e.target);
-    await new Promise(resolve => setTimeout(resolve, 1200));
+  
     const templateParams = {
       name: formData.get("name"),
       email: formData.get("email"),
       message: formData.get("message"),
     };
-    // message to telegram and send email
-
+  
     try {
+      // 1️⃣ Send to Telegram (MAIN ACTION)
       const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -43,17 +43,22 @@ const Contact = () => {
   
       if (!response.ok) throw new Error("Telegram failed");
   
-      // 2️⃣ Send confirmation email to VISITOR
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      );
-  
+      // 2️⃣ Telegram success → show success immediately
       setToast(true);
       e.target.reset();
       setTimeout(() => setToast(false), 4000);
+  
+      // 3️⃣ Send EmailJS (OPTIONAL)
+      emailjs
+        .send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          templateParams,
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        )
+        .catch(err => {
+          console.warn("Email confirmation failed:", err);
+        });
   
     } catch (err) {
       console.error(err);
