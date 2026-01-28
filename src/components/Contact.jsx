@@ -53,7 +53,7 @@ const Contact = () => {
   
       setToast(true);
       e.target.reset();
-      setTimeout(() => setToast(false), 3500);
+      setTimeout(() => setToast(false), 4000);
   
     } catch (err) {
       console.error(err);
