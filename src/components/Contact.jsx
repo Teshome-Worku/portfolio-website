@@ -1,4 +1,5 @@
 import  { useState } from "react";
+import emailjs from "@emailjs/browser";
 import "../css/contact.css";
 import { 
   FaGithub, 
@@ -13,45 +14,56 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(false); // "success" toast state
   const [error, setError] = useState(false); // error state
- 
+
   const API_URL = "/api/sendMessage";
-  const submitHandler= async (e)=>{
+  const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1200));
+  
     const formData = new FormData(e.target);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const phone = formData.get("phone");
-    const message = formData.get("message");
+    await new Promise(resolve => setTimeout(resolve, 1200));
+    const templateParams = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+    // message to telegram and send email
 
-        try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ name, email, phone, message }),
-        });
-    
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        setToast(true);
-        e.target.reset();
-       
-        setTimeout(() => setToast(false), 3500);
-    
-    } catch (error) {
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: templateParams.name,
+          email: templateParams.email,
+          phone: formData.get("phone"),
+          message: templateParams.message,
+        }),
+      });
+  
+      if (!response.ok) throw new Error("Telegram failed");
+  
+      // 2️⃣ Send confirmation email to VISITOR
+      await emailjs.send(
+        "service_d2ar56j",
+        "template_9kypzmr",
+        templateParams,
+        "xhI3_R7hCRalnTxoc"
+      );
+  
+      setToast(true);
+      e.target.reset();
+      setTimeout(() => setToast(false), 3500);
+  
+    } catch (err) {
+      console.error(err);
       setError(true);
       setTimeout(() => setError(false), 3500);
-     
-       console.error("Error submitting form:", error);
-      }
-      finally { 
-        setLoading(false);
-      }
-  }
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   return (
     <section id="contact" className="contact-section">
       {toast && (
@@ -110,7 +122,7 @@ const Contact = () => {
         <form className="contact-form" onSubmit={submitHandler}>
           <input type="text" placeholder="Your Name" name="name" required />
           <input type="email" placeholder="Your Email" name="email" required />
-          <input type="tel" placeholder="Your Phone Number eg. +251 9XX XXX XXX" name="phone" required />
+          <input type="tel" placeholder="Your Phone Number " name="phone" required />
           <textarea placeholder="Your Message" rows="5" name="message" required></textarea>
           <button 
            type="submit"
