@@ -42,9 +42,6 @@ const Contact = () => {
       });
   
       if (!response.ok) throw new Error("Telegram failed");
-      const data = await response.json();
-      if (!data.success) throw new Error("Telegram failed");
-      console.log("Telegram response:", data);
   
       // 2️⃣ Telegram success → show success immediately
       setToast(true);
@@ -61,6 +58,7 @@ const Contact = () => {
         )
         .catch(err => {
           console.warn("Email confirmation failed:", err);
+          console.log("the error is",err)
         });
   
     } catch (err) {
@@ -76,7 +74,7 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       {toast && (
         <div className="toast-success">
-          Thank you! Your message has been sent successfully.Check your email for confirmation.
+          Thank you! Your message has been sent successfully.
         </div>
       )}
       {error && (
