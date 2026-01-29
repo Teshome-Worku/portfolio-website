@@ -14,8 +14,11 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(false); // "success" toast state
   const [error, setError] = useState(false); // error state
-  const [inputError, setInputError] = useState(false); // input validation error state
+   // input validation error state
   const [phoneError, setPhoneError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [messageError, setMessageError] = useState("");
 
   const API_URL = "/api/sendMessage";
   const submitHandler = async (e) => {
@@ -31,28 +34,27 @@ const Contact = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!name || name.length < 3 || !/^[a-zA-Z\s]+$/.test(name)) {
-      setInputError(true);
-      setTimeout(() => setInputError(false), 3500);
+      setNameError("Name must be at least 3 characters long and contain only letters and spaces");
+      setTimeout(() => setNameError(false), 3500);
       setLoading(false);
       console.log("name error");
       return;
     }
     if(!emailRegex.test(email)){
-      setInputError(true);
-      setTimeout(() => setInputError(false), 3500);
+      setEmailError("Invalid email address");
+      setTimeout(() => setEmailError(false), 3500);
       setLoading(false);
       console.log("email error");
       return;
     }
     if (!message || message.length < 3) {
-      setInputError(true);
-      setTimeout(() => setInputError(false), 3500);
+      setMessageError("Message must be at least 3 characters long");
+      setTimeout(() => setMessageError(false), 3500);
       setLoading(false);
       console.log("message error");
       return;
     }
     if(!PhoneRegex.test(phone)) {
-      // setInputError(true);
       setPhoneError("Invalid phone number");
       setTimeout(() => setPhoneError(false), 3500);
       setLoading(false);
@@ -61,9 +63,6 @@ const Contact = () => {
     }
 
     const formData = new FormData(e.target);
-    const VITE_EMAILJS_SERVICE_ID=process.env.VITE_EMAILJS_SERVICE_ID;
-    const VITE_EMAILJS_TEMPLATE_ID=process.env.VITE_EMAILJS_TEMPLATE_ID;
-    // const VITE_EMAILJS_PUBLIC_KEY=process.env.VITE_EMAILJS_PUBLIC_KEY;
     const templateParams = {
       name: formData.get("name"),
       email: formData.get("email"),
@@ -91,8 +90,8 @@ const Contact = () => {
       // 3️⃣ Send EmailJS (OPTIONAL)
       emailjs
         .send(
-          VITE_EMAILJS_SERVICE_ID,
-          VITE_EMAILJS_TEMPLATE_ID,
+          "service_ram2189",
+          "template_7ffh65q",
           templateParams,
           "JtEqHfKVbO-uSUMNq"
         )
@@ -162,15 +161,25 @@ const Contact = () => {
         </div>
         {/* Right Side */}
         <form className="contact-form" onSubmit={submitHandler}>
-          {inputError && (
-            <div className="input-error">
-              ⚠️ Please fill input fields correctly.
-            </div>
-
-          )}
+        
           {phoneError && (
             <div className="input-error">
               ⚠️ {phoneError}
+            </div>
+          )}
+          {nameError && (
+            <div className="input-error">
+              ⚠️ {nameError}
+            </div>
+          )}
+          {emailError && (
+            <div className="input-error">
+              ⚠️ {emailError}
+            </div>
+          )}
+          {messageError && (
+            <div className="input-error">
+              ⚠️ {messageError}
             </div>
           )}
 
