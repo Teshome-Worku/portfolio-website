@@ -21,11 +21,13 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     //validate user input
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const message = e.target.message.value;
-    const phone = e.target.phone.value;
-    if (name.trimStart()==="" || name.length < 3 || !/^[a-zA-Z\s]+$/.test(name)) {
+    const name = e.target.name.value.trim();
+    const email = e.target.email.value.trim();
+    const message = e.target.message.value.trim();
+    const phone = e.target.phone.value.trim();
+    const PhoneRegex = /^(?:\+251|0)(9|7)\d{8}$/;
+
+    if (!name || name.length < 3 || !/^[a-zA-Z\s]+$/.test(name)) {
       setInputError(true);
       setTimeout(() => setInputError(false), 3500);
       setLoading(false);
@@ -37,13 +39,13 @@ const Contact = () => {
       setLoading(false);
       return;
     }
-    if (message.trimStart()==="" || message.length < 3) {
+    if (!message || message.length < 3) {
       setInputError(true);
       setTimeout(() => setInputError(false), 3500);
       setLoading(false);
       return;
     }
-    if(!/^\+?[0-9]{10}$/.test(phone) || phone.length <10){
+    if(!PhoneRegex.test(phone)) {
       setInputError(true);
       setTimeout(() => setInputError(false), 3500);
       setLoading(false);
