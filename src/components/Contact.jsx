@@ -90,7 +90,7 @@ const Contact = () => {
       // 3️⃣ Send EmailJS (OPTIONAL)
       emailjs
         .send(
-          "service_ram2189",
+          "service_lzo55ih",
           "template_7ffh65q",
           templateParams,
           "JtEqHfKVbO-uSUMNq"
