@@ -14,11 +14,42 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(false); // "success" toast state
   const [error, setError] = useState(false); // error state
+  const [inputError, setInputError] = useState(false); // input validation error state
 
   const API_URL = "/api/sendMessage";
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
+    //validate user input
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+    const phone = e.target.phone.value;
+    if (name.trimStart()==="" || name.length < 3 || !/^[a-zA-Z\s]+$/.test(name)) {
+      setInputError(true);
+      setTimeout(() => setInputError(false), 3500);
+      setLoading(false);
+      return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      setInputError(true);
+      setTimeout(() => setInputError(false), 3500);
+      setLoading(false);
+      return;
+    }
+    if (message.trimStart()==="" || message.length < 3) {
+      setInputError(true);
+      setTimeout(() => setInputError(false), 3500);
+      setLoading(false);
+      return;
+    }
+    if(!/^\+?[0-9]{10}$/.test(phone) || phone.length <10){
+      setInputError(true);
+      setTimeout(() => setInputError(false), 3500);
+      setLoading(false);
+      return;
+    }
+
     const formData = new FormData(e.target);
     const VITE_EMAILJS_SERVICE_ID=process.env.VITE_EMAILJS_SERVICE_ID;
     const VITE_EMAILJS_TEMPLATE_ID=process.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -57,7 +88,6 @@ const Contact = () => {
         )
         .catch(err => {
           console.warn("Email confirmation failed:", err);
-          console.log("the error is",err)
         });
   
     } catch (err) {
@@ -115,14 +145,19 @@ const Contact = () => {
           {/* Social Links */}
           <div className="contact-socials">
             <a href="https://github.com/Teshome-Worku" target="_blank"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/teshome-worku-017834392" target="_blank"><FaLinkedin /></a>
+            <a href="https://www.linkedin.com/in/teshome-worku-017834392"         target="_blank"><FaLinkedin /></a>
             <a href="https://t.me/Username_1251" target="_blank"><FaTelegram /></a>
             <a href="https://web.facebook.com/tesheTech" target="_blank"><FaFacebook /></a>
           </div>
         </div>
         {/* Right Side */}
         <form className="contact-form" onSubmit={submitHandler}>
-          <input type="text" placeholder="Your Name" name="name" required />
+          {inputError && (
+            <div className="input-error">
+              ⚠️ Please fill input fields correctly.
+            </div>
+          )}
+          <input type="text" placeholder="Your Name" name="name" required  />
           <input type="email" placeholder="Your Email" name="email" required />
           <input type="tel" placeholder="Your Phone Number " name="phone" required />
           <textarea placeholder="Your Message" rows="5" name="message" required></textarea>
