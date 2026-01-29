@@ -25,7 +25,7 @@ const Contact = () => {
     const email = e.target.email.value.trim();
     const message = e.target.message.value.trim();
     const phone = e.target.phone.value.trim();
-    const PhoneRegex = /^(?:\+251|0)(9|7)\d{8}$/;
+    const PhoneRegex = /^(?:\+251|0)(9|7)\d{8-10}$/;
 
     if (!name || name.length < 3 || !/^[a-zA-Z\s]+$/.test(name)) {
       setInputError(true);
@@ -55,7 +55,7 @@ const Contact = () => {
     const formData = new FormData(e.target);
     const VITE_EMAILJS_SERVICE_ID=process.env.VITE_EMAILJS_SERVICE_ID;
     const VITE_EMAILJS_TEMPLATE_ID=process.env.VITE_EMAILJS_TEMPLATE_ID;
-    const VITE_EMAILJS_PUBLIC_KEY=process.env.VITE_EMAILJS_PUBLIC_KEY;
+    // const VITE_EMAILJS_PUBLIC_KEY=process.env.VITE_EMAILJS_PUBLIC_KEY;
     const templateParams = {
       name: formData.get("name"),
       email: formData.get("email"),
@@ -86,7 +86,7 @@ const Contact = () => {
           VITE_EMAILJS_SERVICE_ID,
           VITE_EMAILJS_TEMPLATE_ID,
           templateParams,
-          VITE_EMAILJS_PUBLIC_KEY
+          "JtEqHfKVbO-uSUMNq"
         )
         .catch(err => {
           console.warn("Email confirmation failed:", err);
