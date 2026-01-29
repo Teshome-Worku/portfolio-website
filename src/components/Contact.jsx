@@ -25,30 +25,36 @@ const Contact = () => {
     const email = e.target.email.value.trim();
     const message = e.target.message.value.trim();
     const phone = e.target.phone.value.trim();
-    const PhoneRegex = /^(?:\+251|0)(9|7)\d{8-10}$/;
+
+    const PhoneRegex = /^(?:\+251|0)(9|7)\d{8}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!name || name.length < 3 || !/^[a-zA-Z\s]+$/.test(name)) {
       setInputError(true);
       setTimeout(() => setInputError(false), 3500);
       setLoading(false);
+      console.log("name error");
       return;
     }
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    if(!emailRegex.test(email)){
       setInputError(true);
       setTimeout(() => setInputError(false), 3500);
       setLoading(false);
+      console.log("email error");
       return;
     }
     if (!message || message.length < 3) {
       setInputError(true);
       setTimeout(() => setInputError(false), 3500);
       setLoading(false);
+      console.log("message error");
       return;
     }
     if(!PhoneRegex.test(phone)) {
       setInputError(true);
       setTimeout(() => setInputError(false), 3500);
       setLoading(false);
+      console.log("phone error");
       return;
     }
 
