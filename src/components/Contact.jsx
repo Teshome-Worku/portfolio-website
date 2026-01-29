@@ -15,6 +15,7 @@ const Contact = () => {
   const [toast, setToast] = useState(false); // "success" toast state
   const [error, setError] = useState(false); // error state
   const [inputError, setInputError] = useState(false); // input validation error state
+  const [phoneError, setPhoneError] = useState("");
 
   const API_URL = "/api/sendMessage";
   const submitHandler = async (e) => {
@@ -51,8 +52,9 @@ const Contact = () => {
       return;
     }
     if(!PhoneRegex.test(phone)) {
-      setInputError(true);
-      setTimeout(() => setInputError(false), 3500);
+      // setInputError(true);
+      setPhoneError("Invalid phone number");
+      setTimeout(() => setPhoneError(false), 3500);
       setLoading(false);
       console.log("phone error");
       return;
@@ -164,7 +166,14 @@ const Contact = () => {
             <div className="input-error">
               ⚠️ Please fill input fields correctly.
             </div>
+
           )}
+          {phoneError && (
+            <div className="input-error">
+              ⚠️ {phoneError}
+            </div>
+          )}
+
           <input type="text" placeholder="Your Name" name="name" required  />
           <input type="email" placeholder="Your Email" name="email" required />
           <input type="tel" placeholder="Your Phone Number " name="phone" required />
