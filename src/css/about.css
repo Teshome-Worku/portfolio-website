@@ -24,6 +24,11 @@
     box-shadow: 0 0 30px rgba(0, 242, 169, 0.2);
 }
 
+.about-image img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
 
 /* Content */
 
