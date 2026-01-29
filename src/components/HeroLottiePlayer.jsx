@@ -9,8 +9,7 @@ export default function HeroLottiePlayer() {
   useEffect(() => {
     // Remote fallback Lottie JSON (free sample). Replace with local file if you add one.
     const url = "https://assets9.lottiefiles.com/packages/lf20_jcikwtux.json";
-    const localurl='../assets/animations/hero-animation.json';
-    const url1='../assets/animations/animation.webm';
+  
     let cancelled = false;
 
     fetch(url)

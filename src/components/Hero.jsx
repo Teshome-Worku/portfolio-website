@@ -17,28 +17,30 @@ const Hero = () => {
             {/* Social Links */}
           <div className="hero-socials">
             <a href="https://github.com/Teshome-Worku" 
-            target="_blank" 
-            title="Github"
-            rel="noreferrer">
-            <FaGithub />
+              target="_blank" 
+              title="Github"
+              rel="noreferrer">
+              <FaGithub />
             </a>
             <a href="https://www.linkedin.com/in/teshome-worku-017834392"         
-            target="_blank" 
-            title="LinkedIn"
-            rel="noreferrer">
-            <FaLinkedin />
+              target="_blank" 
+              title="LinkedIn"
+              rel="noreferrer">
+              <FaLinkedin />
             </a>
             <a href="https://t.me/Username_1251"
               title="Telegram"
-              target="_blank" rel="noreferrer">
+              target="_blank" 
+              rel="noreferrer">
               <FaTelegramPlane />
-          </a>
+            </a>
             <a 
-            href="mailto:teshomeworku96@gmail.com"
-            title="Email">
-            <FaEnvelope />
+              href="mailto:teshomeworku96@gmail.com"
+              title="Email">
+              <FaEnvelope />
             </a>
           </div>
+
           <div className="hero-buttons">
             <a href="/TeshomeWorkuResume.pdf" className="btn primary" download title="Download CV">Download Resume</a>
           
