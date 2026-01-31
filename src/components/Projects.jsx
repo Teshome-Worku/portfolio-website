@@ -39,7 +39,7 @@ const projects = [
     title: "Appointment Booking System (WIP)",
     description:
       "A booking system that allows users to schedule appointments with services. Currently under development.",
-    tech: ["React"],
+    tech: ["React","Tailwind CSS"],
     image: appointmentImg,
     live: "#",
     github: "https://github.com/Teshome-Worku/appointment-booking-system",

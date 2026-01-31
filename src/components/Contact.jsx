@@ -147,16 +147,16 @@ const Contact = () => {
 
             <div className="contact-item">
               <FaEnvelope />
-              <span>teshomeworku96@gmail.com</span>
+              <span><a href="mailto:teshomeworku96@gmail.com">teshomeworku96@gmail.com</a></span>
             </div>
           </div>
 
           {/* Social Links */}
           <div className="contact-socials">
-            <a href="https://github.com/Teshome-Worku" target="_blank"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/teshome-worku-017834392"         target="_blank"><FaLinkedin /></a>
-            <a href="https://t.me/Username_1251" target="_blank"><FaTelegram /></a>
-            <a href="https://web.facebook.com/tesheTech" target="_blank"><FaFacebook /></a>
+            <a href="https://github.com/Teshome-Worku" target="_blank" title="GitHub"><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/teshome-worku-017834392" target="_blank" title="LinkedIn"><FaLinkedin /></a>
+            <a href="https://t.me/Username_1251" target="_blank" title="Telegram"><FaTelegram /></a>
+            <a href="https://web.facebook.com/tesheTech" target="_blank" title="Facebook"><FaFacebook /></a>
           </div>
         </div>
         {/* Right Side */}
