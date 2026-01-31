@@ -41,6 +41,16 @@
     font-size: 1.1rem;
 }
 
+.contact-item a {
+    color: #b0c4d4;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-item a:hover {
+    color: #00ffb3;
+}
+
 .contact-socials {
     display: flex;
     gap: 15px;
