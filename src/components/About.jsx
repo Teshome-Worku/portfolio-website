@@ -1,5 +1,5 @@
 import "../css/about.css";
-import profileImg from "../assets/images/profile.jpg"; 
+import profileImage from "../assets/images/image.png";
 
 const About = () => {
   return (
@@ -8,7 +8,7 @@ const About = () => {
 
         {/* Left Image */}
         <div className="about-image">
-          <img src={profileImg} alt="Teshe Profile" />
+          <img src={profileImage} alt="Teshe Profile" />
         </div>
 
         {/* Right Content */}
