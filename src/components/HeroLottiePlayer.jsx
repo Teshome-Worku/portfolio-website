@@ -34,7 +34,7 @@ export default function HeroLottiePlayer() {
   if (!animationData || failed) {
     return (
       <div className="hero-lottie" aria-hidden="true">
-        <img src={heroImg} alt="Coding Illustration" style={{ width: "100%", maxWidth: 380 }} />
+        <img src={heroImg} alt="Coding Illustration" style={{ width: "100%", maxWidth: 420 }} />
       </div>
     );
   }

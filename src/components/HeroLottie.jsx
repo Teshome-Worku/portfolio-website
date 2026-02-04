@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
-// const LazyPlayer = React.lazy(() => import("./HeroLottiePlayer"));
+const LazyPlayer = React.lazy(() => import("./HeroLottiePlayer"));
 import heroImg from "../assets/images/Coding-pana.png";
 
 export default function HeroLottie() {
@@ -28,13 +28,13 @@ export default function HeroLottie() {
   const prefersReduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Reduced motion or not yet in viewport -> show static fallback image
-  const fallback = <img src={heroImg} alt="Coding Illustration" style={{ width: "100%", maxWidth: 380 }} />;
+  const fallback = <img src={heroImg} alt="Coding Illustration" style={{ width: "100%", maxWidth: 420 }} />;
 
   if (prefersReduced) return fallback;
 
   return show ? (
     <Suspense fallback={fallback}>
-      {/* <LazyPlayer /> */}
+      <LazyPlayer />
     </Suspense>
   ) : (
     fallback

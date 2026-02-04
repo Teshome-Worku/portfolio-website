@@ -1,5 +1,6 @@
 import "../css/hero.css";
 import { FaGithub, FaLinkedin, FaTelegramPlane, FaEnvelope } from "react-icons/fa";
+
 import HeroLottie from "./HeroLottie";
 const Hero = () => {
   return (
