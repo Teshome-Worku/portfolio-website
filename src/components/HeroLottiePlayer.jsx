@@ -1,5 +1,5 @@
 import  { useEffect, useState } from "react";
-// import Lottie from "lottie-react";
+import Lottie from "lottie-react";
 import heroImg from "../assets/images/Coding-pana.png";
 
 export default function HeroLottiePlayer() {

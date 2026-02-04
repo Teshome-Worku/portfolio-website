@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
-const LazyPlayer = React.lazy(() => import("./HeroLottiePlayer"));
+// const LazyPlayer = React.lazy(() => import("./HeroLottiePlayer"));
 import heroImg from "../assets/images/Coding-pana.png";
 
 export default function HeroLottie() {
@@ -34,7 +34,7 @@ export default function HeroLottie() {
 
   return show ? (
     <Suspense fallback={fallback}>
-      <LazyPlayer />
+      {/* <LazyPlayer /> */}
     </Suspense>
   ) : (
     fallback
