@@ -1,6 +1,6 @@
 import  { useEffect, useState } from "react";
 import Lottie from "lottie-react";
-import heroImg from "../assets/images/coding-pana.png";
+import heroImg from "../assets/images/Coding-pana.png";
 
 export default function HeroLottiePlayer() {
   const [animationData, setAnimationData] = useState(null);

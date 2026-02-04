@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from "react";
 const LazyPlayer = React.lazy(() => import("./HeroLottiePlayer"));
-import heroImg from "../assets/images/coding.png";
+import heroImg from "../assets/images/Coding-pana.png";
 
 export default function HeroLottie() {
   const [show, setShow] = useState(false);
