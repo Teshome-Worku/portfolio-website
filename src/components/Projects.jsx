@@ -36,9 +36,9 @@ const projects = [
     featured: false,
   },
   {
-    title: "Appointment Booking System (WIP)",
+    title: "Appointment Booking System ",
     description:
-      "A booking system that allows users to schedule appointments with services. Currently under development.",
+      "A booking system that allows users to schedule appointments with services. ",
     tech: ["React","Tailwind CSS"],
     image: appointmentImg,
     live: "#",
