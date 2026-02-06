@@ -47,8 +47,8 @@ const Contact = () => {
       console.log("email error");
       return;
     }
-    if (!message || message.length < 3) {
-      setMessageError("Message must be at least 3 characters long");
+    if (!message || message.length < 3 || message.length > 1000 || !/^[a-zA-Z0-9\s\.,!?-]+$/.test(message)) {
+      setMessageError("Message must be at least 3 characters long and no more than 1000 characters, and contain only letters, numbers, and basic punctuation");
       setTimeout(() => setMessageError(false), 3500);
       setLoading(false);
       console.log("message error");
