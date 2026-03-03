@@ -1,20 +1,33 @@
 import "../css/projects.css";
 import lemiImg from "../assets/images/lemi.png";
 import inventoryImg from "../assets/images/inventory.jpg";
-import expenseImg from "../assets/images/expense.jpg";
 import appointmentImg from "../assets/images/appointment.jpg";
+import astuComplaintImg from "../assets/images/astu-tracker.png";
+import mamiFoodImg from "../assets/images/mami-food.png";
 
 const projects = [
   {
-    title: "Lemi Fashion - E-commerce Platform",
+    title: "ASTU Complaint Tracker - Campus Complaint Management System",
     description:
-      "A fashion e-commerce platform integrated with a Telegram bot to send real-time order notifications to the shop owner.",
-    tech: ["HTML", "CSS", "JavaScript", "Node.js", "Telegram API"],
-    image: lemiImg,
-    live: "#",
-    github: "https://github.com/Teshome-Worku/lemi-fashion",
+      "A full-stack campus complaint submission and tracking system that allows students to file complaints and monitor their status in real time. Designed to improve transparency and streamline communication within the university.",
+    tech: ["React", "Node.js", "Express", "REST API", "Vercel"],
+    image: astuComplaintImg,
+    live: "https://astu-complaint-tracker.vercel.app/",
+    github: "https://github.com/Teshome-Worku/astu-complaint-tracker",
     featured: true,
   },
+  
+  {
+    title: "Mami Food – Online Ordering & Tracking System ",
+    description:
+      "A full-stack food ordering web application that allows users to browse menu items, add to cart, place orders, and track their order status. ",
+    tech: ["React","Node.js","Express","MongoDB","REST API", "Tailwind CSS"],
+    image: mamiFoodImg,
+    live: "#",
+    github: "https://github.com/Teshome-Worku/food-order-frontend",
+    featured: true,
+  },
+  
   {
     title: "Inventory Management System",
     description:
@@ -23,28 +36,19 @@ const projects = [
     image: inventoryImg,
     live: "#",
     github: "https://github.com/Teshome-Worku/inventory-management-system",
-    featured: true,
-  },
-  {
-    title: "Expense Tracker App",
-    description:
-      "A React-based expense tracker app that helps users manage and visualize their daily expenses.",
-    tech: ["React", "CSS"],
-    image: expenseImg,
-    live: "#",
-    github: "https://github.com/Teshome-Worku/expense-tracker-app",
     featured: false,
   },
   {
-    title: "Appointment Booking System ",
+    title: "Lemi Fashion - E-commerce Platform",
     description:
-      "A booking system that allows users to schedule appointments with services. ",
-    tech: ["React","Tailwind CSS"],
-    image: appointmentImg,
+      "A fashion e-commerce platform integrated with a Telegram bot to send real-time order notifications to the shop owner.",
+    tech: ["HTML", "CSS", "JavaScript", "Node.js", "Telegram API"],
+    image: lemiImg,
     live: "#",
-    github: "https://github.com/Teshome-Worku/appointment-booking-system",
+    github: "https://github.com/Teshome-Worku/lemi-fashion",
     featured: false,
   },
+ 
 ];
 
 const Projects = () => {

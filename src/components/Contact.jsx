@@ -158,7 +158,20 @@ const Contact = () => {
             <a href="https://t.me/Username_1251" target="_blank" title="Telegram"><FaTelegram /></a>
             <a href="https://web.facebook.com/tesheTech" target="_blank" title="Facebook"><FaFacebook /></a>
           </div>
+          {/* my google map location added here */}
+          <div className="map-container">
+            <iframe
+              className="map-iframe"
+              title="Adama Science and Technology University Main Gate"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d415.1781920712087!2d39.290872330973215!3d8.556970494764508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b1fe1a560261f%3A0xfe089382f5644009!2sAdama%20Science%20and%20Technology%20University%20Gada%20Gate!5e1!3m2!1sen!2sus!4v1772531097359!5m2!1sen!2sus"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
+     
         {/* Right Side */}
         <form className="contact-form" onSubmit={submitHandler}>
         

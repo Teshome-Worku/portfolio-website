@@ -1,8 +1,8 @@
 import "../css/skills.css";
 import { 
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma, FaDatabase 
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma, FaDatabase
 } from "react-icons/fa";
-import { SiTailwindcss } from "react-icons/si";
+import { SiTailwindcss, SiExpress } from "react-icons/si";
 
 const skillsData = {
   frontend: [
@@ -14,7 +14,8 @@ const skillsData = {
   ],
   backend: [
     { name: "Node.js", level: 65, icon: <FaNodeJs /> },
-    { name: "IndexedDB", level: 60, icon: <FaDatabase /> },
+    {name: "Express", level: 60, icon: <SiExpress /> },
+    { name: "MongoDB", level: 60, icon: <FaDatabase /> },
   ],
   tools: [
     { name: "Git", level: 80, icon: <FaGitAlt /> },
